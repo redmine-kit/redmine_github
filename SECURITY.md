@@ -1,6 +1,6 @@
 # Security
 
-redmine_github is under consideration; the design, including where secrets are kept, is in [docs/design.md](docs/design.md).
+Redmine GitHub is under consideration; the design, including where secrets are kept, is in [docs/design.md](docs/design.md).
 
 ## Reporting a vulnerability
 

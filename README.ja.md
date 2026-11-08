@@ -1,6 +1,6 @@
-# redmine_github
+# Redmine GitHub
 
-Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の標準のリポジトリ(サーバーに置いた Git などのリポジトリ)の代わりに、GitHub のリポジトリを GitHub App でつなぎます。
+Redmine GitHub(`redmine_github`)は、Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の標準のリポジトリ(サーバーに置いた Git などのリポジトリ)の代わりに、GitHub のリポジトリを GitHub App でつなぎます。
 
 [English](README.md)
 
@@ -20,4 +20,4 @@ Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の�
 
 ## ライセンス
 
-redmine_github は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine のプロジェクトと GitHub とは関係ありません。
+Redmine GitHub は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine のプロジェクトと GitHub とは関係ありません。

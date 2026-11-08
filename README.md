@@ -1,6 +1,6 @@
-# redmine_github
+# Redmine GitHub
 
-A Redmine plugin that connects Redmine to GitHub. Instead of Redmine's standard repositories (Git and other repositories on the server), it connects GitHub repositories through a GitHub App.
+Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to GitHub. Instead of Redmine's standard repositories (Git and other repositories on the server), it connects GitHub repositories through a GitHub App.
 
 [日本語](README.ja.md)
 
@@ -16,4 +16,4 @@ A Redmine plugin that connects Redmine to GitHub. Instead of Redmine's standard 
 
 ## License
 
-redmine_github is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE). Not affiliated with the Redmine project or with GitHub.
+Redmine GitHub is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE). Not affiliated with the Redmine project or with GitHub.
