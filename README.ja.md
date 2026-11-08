@@ -6,7 +6,7 @@ Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の�
 
 > **状態:** 検討の段階です。リポジトリには設計だけがあり、まだ何も実装していません。
 
-- サーバーにリポジトリを置けない環境([redmine-serverless](https://github.com/redmine-kit/redmine-serverless) で AWS Lambda で動かす Redmine など)でも、チケットとコミット、プル リクエストを結び付けられるようにします。
+- サーバーにリポジトリを置けない環境([redmine-kit/serverless](https://github.com/redmine-kit/serverless) で AWS Lambda で動かす Redmine など)でも、チケットとコミット、プル リクエストを結び付けられるようにします。
 - ふつうのサーバーの Redmine でも使えるようにします。
 
 <a id="documentation"></a>
