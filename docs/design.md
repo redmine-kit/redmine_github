@@ -6,7 +6,7 @@ This is the design of a plugin that replaces Redmine's standard repositories wit
 
 | Item | Decision |
 | --- | --- |
-| Form | A Redmine plugin, `redmine_github`. It is a separate plugin from `redmine_serverless` in redmine-kit/serverless, so that it also works with Redmine on an ordinary server |
+| Form | A Redmine plugin, `redmine_github`. It is a separate plugin from `redmine_serverless` in Serverless, so that it also works with Redmine on an ordinary server |
 | Goal | Connect to GitHub repositories instead of Redmine's standard repositories (Git repositories stored on the server) |
 | First feature | Show the related commits and pull requests (with their state and a link to GitHub) on the issue page |
 | How it connects | A shared gateway (see [Shared gateway](#shared-gateway-proposal) below) holds the GitHub App. Redmine does not connect to GitHub directly; it connects behind the gateway. One GitHub App and gateway can serve many Redmines |
@@ -48,7 +48,7 @@ flowchart LR
 | Issue tokens | On a request from Redmine, create and return an installation token. The token is limited to the connected repositories and to read-only permissions (metadata, contents, pull requests). It expires after 1 hour (GitHub's rule) |
 | Manage connections | The links between Redmines and installations (see [Connecting a Redmine](#connecting-a-redmine) below) and the secret for each connection |
 
-- **Keep notifications small:** The gateway does not pass GitHub's notifications through as they are. It trims them to the fields that are needed. This lets a Redmine with a limit on request body size (1 MB), such as redmine-kit/serverless, receive them.
+- **Keep notifications small:** The gateway does not pass GitHub's notifications through as they are. It trims them to the fields that are needed. This lets a Redmine with a limit on request body size (1 MB), such as Serverless, receive them.
 - **Keep nothing:** Notification payloads (commit messages and so on) are kept only while retries are pending and are deleted after a set period. The gateway neither reads nor stores code.
 
 ### Connecting a Redmine
@@ -95,10 +95,10 @@ Under consideration: plugging into Redmine's standard repository framework (the 
 | Add a repository type (a type such as `Repository::Github` and a GitHub API adapter) | Redmine's standard commit list, issue-commit links, "Fixing keywords", and repository pages work as they are | The standard adapters assume they return the output of a local command (`git`), so it needs checking whether they can be replaced with the API. Serving file browsing and diffs through the API tends to hit the API rate limits |
 | Own display only (custom tables and a hook on the issue page) | Small to build. Little dependence on Redmine internals | Redmine's standard repository features (commit list, status changes by keyword, and so on) are not available |
 
-## Using it with redmine-kit/serverless
+## Using it with Serverless
 
-- **Notification size:** In redmine-kit/serverless, request bodies through CloudFront are limited to 1 MB. Because the gateway sends small trimmed notifications, large GitHub push webhooks are unlikely to hit this limit. If a notification is still over 1 MB after trimming, it is sent in parts.
-- **Jobs:** In redmine-kit/serverless, ActiveJob jobs run on `redmine-worker` through SQS. This plugin uses only ActiveJob's standard mechanisms.
+- **Notification size:** In Serverless, request bodies through CloudFront are limited to 1 MB. Because the gateway sends small trimmed notifications, large GitHub push webhooks are unlikely to hit this limit. If a notification is still over 1 MB after trimming, it is sent in parts.
+- **Jobs:** In Serverless, ActiveJob jobs run on `redmine-worker` through SQS. This plugin uses only ActiveJob's standard mechanisms.
 - **Outbound traffic:** The plugin calls the GitHub API, so Redmine must be able to reach GitHub.
 
 ## Open questions

@@ -6,7 +6,7 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 
 > **Status:** under consideration. The repository holds the design; nothing is implemented yet.
 
-- It links issues to commits and pull requests also where repositories cannot be kept on the server, such as Redmine on AWS Lambda with [redmine-kit/serverless](https://github.com/redmine-kit/serverless).
+- It links issues to commits and pull requests also where repositories cannot be kept on the server, such as Redmine on AWS Lambda with [Serverless](https://github.com/redmine-kit/serverless).
 - It also works with Redmine on an ordinary server.
 
 ## Documentation

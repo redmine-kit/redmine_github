@@ -8,7 +8,7 @@ Redmine の標準のリポジトリを、GitHub のリポジトリで置き換�
 
 | 項目 | 決めたこと |
 | --- | --- |
-| 形 | Redmine のプラグイン `redmine_github`。redmine-kit/serverless の `redmine_serverless` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
+| 形 | Redmine のプラグイン `redmine_github`。Serverless の `redmine_serverless` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
 | 目的 | Redmine の標準のリポジトリ(サーバーに置いた Git のリポジトリ)の代わりに、GitHub のリポジトリとつなぐ |
 | 最初にできること | チケットの画面に、関わるコミットとプル リクエスト(状態と、GitHub へのリンク)を出す |
 | つなぎ方 | GitHub App を、共通のゲートウェイ(下の「共通のゲートウェイ」)が持つ。Redmine は、GitHub に直接つながず、ゲートウェイの先につながる。1 つの GitHub App とゲートウェイを、複数の Redmine で使える |
@@ -56,7 +56,7 @@ flowchart LR
 | トークンを渡す | Redmine の依頼で、インストールのトークンを作って渡す。トークンは、つないだリポジトリだけ、読むだけの権限(メタデータ、中身、プル リクエスト)に絞る。期限は 1 時間(GitHub の決まり) |
 | つなぎを管理する | Redmine とインストールの結び付け(下の「つなぐ手順」)と、つなぎごとの秘密の値 |
 
-- **通知を小さくする:** GitHub の通知をそのまま渡さず、要る項目だけに整えて渡します。redmine-kit/serverless のように、要求の本文に上限(1 MB)がある Redmine でも受けられます。
+- **通知を小さくする:** GitHub の通知をそのまま渡さず、要る項目だけに整えて渡します。Serverless のように、要求の本文に上限(1 MB)がある Redmine でも受けられます。
 - **残さない:** 通知の中身(コミットのメッセージなど)は、やり直しのあいだだけ残し、決めた期間で消します。ゲートウェイは、コードを読みも残しもしません。
 
 <a id="connecting-a-redmine"></a>
@@ -111,12 +111,12 @@ Redmine の標準のリポジトリの仕組み(`Repository` のモデル、`Red
 | リポジトリの種類として入る(`Repository::Github` のような種類と、GitHub の API のアダプター) | Redmine の標準のコミットの一覧、チケットとコミットの関連付け、「修正を示すキーワード」、リポジトリの画面をそのまま使える | 標準のアダプターは、ローカルのコマンド(`git`)の結果を返す前提なので、API に置き換えられるかを確認する必要がある。ファイルの閲覧や差分を API で返すと、呼び出しの回数の上限に当たりやすい |
 | 自前の表示だけ(独自のテーブルと、チケットの画面のフック) | 作りが小さい。Redmine の内部への依存が少ない | Redmine の標準のリポジトリの機能(コミットの一覧、キーワードでの状態の変更など)は使えない |
 
-<a id="using-it-with-redmine-kitserverless"></a>
+<a id="using-it-with-serverless"></a>
 
-## redmine-kit/serverless で使うとき
+## Serverless で使うとき
 
-- **通知の大きさ:** redmine-kit/serverless では、CloudFront を通る要求の本文が 1 MB までです。ゲートウェイが整えた小さな通知を送るので、GitHub の push の webhook が大きくても当たりにくくなります。整えたあとも 1 MB を超えるときは、分けて送ります。
-- **ジョブ:** redmine-kit/serverless では、ActiveJob のジョブは SQS で `redmine-worker` が動かします。このプラグインは、ActiveJob の標準の仕組みだけを使います。
+- **通知の大きさ:** Serverless では、CloudFront を通る要求の本文が 1 MB までです。ゲートウェイが整えた小さな通知を送るので、GitHub の push の webhook が大きくても当たりにくくなります。整えたあとも 1 MB を超えるときは、分けて送ります。
+- **ジョブ:** Serverless では、ActiveJob のジョブは SQS で `redmine-worker` が動かします。このプラグインは、ActiveJob の標準の仕組みだけを使います。
 - **外への通信:** GitHub の API を呼ぶので、Redmine から GitHub に届く必要があります。
 
 <a id="open-questions"></a>

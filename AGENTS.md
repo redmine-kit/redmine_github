@@ -5,7 +5,7 @@ Guidelines for people and coding agents working in this repository. See [README.
 ## Rules
 
 - **Do not edit Redmine:** use only Redmine's extension points (plugins, hooks, `prepend`). List replaced code in the documentation.
-- **Works in any environment:** do not depend on one way of running Redmine (such as Lambda). Notes for use with redmine-kit/serverless go in their own section.
+- **Works in any environment:** do not depend on one way of running Redmine (such as Lambda). Notes for use with Serverless go in their own section.
 - **No secrets in the repository:** the GitHub App's private key and webhook secrets are kept neither in this repository nor in plain text in Redmine's database (where they are kept is decided in [docs/design.md](docs/design.md)).
 - **What to build only:** describe what the plugin and the protocol do. No companies, customers, services or prices; examples use `example.com` and similar.
 
