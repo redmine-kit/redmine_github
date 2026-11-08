@@ -10,7 +10,7 @@ This is the design of a plugin that replaces Redmine's standard repositories wit
 | Goal | Connect to GitHub repositories instead of Redmine's standard repositories (Git repositories stored on the server) |
 | First feature | Show the related commits and pull requests (with their state and a link to GitHub) on the issue page |
 | How it connects | A shared gateway (see [Shared gateway](#shared-gateway-proposal) below) holds the GitHub App. Redmine does not connect to GitHub directly; it connects behind the gateway. One GitHub App and gateway can serve many Redmines |
-| Default gateway | By default, the plugin connects to the hosted gateway (a low-priced paid service). In the plugin settings, it can be switched to any other gateway that follows the protocol |
+| Gateway URL | The plugin connects to the gateway whose URL is set in the plugin settings. Any gateway that follows the protocol can be used |
 | Name | `redmine_github`. Another plugin has the same name (agileware-jp/redmine_github), which is acceptable |
 
 ## Shared gateway (proposal)
@@ -63,7 +63,7 @@ flowchart LR
 - **Notifications:** The gateway POSTs trimmed notifications to the plugin's endpoint (path to be decided). It signs the body and timestamp with the connection's secret. The plugin checks the signature, the timestamp (rejecting notifications that are too old), and the notification ID (to detect redeliveries).
 - **Tokens:** The plugin requests tokens from the gateway with the connection ID and a signature.
 - **Published protocol:** This protocol is published in this repository's documentation. The plugin can connect to any gateway that follows it.
-- **Default gateway:** The gateway URL in the plugin settings points to the hosted gateway by default. Users do not create a GitHub App themselves; they install the plugin and follow the connection steps. The hosted gateway is a low-priced paid service (its pricing and operator are decided on the service side). To switch, change the URL in the settings.
+- **Gateway URL:** The plugin settings hold the gateway's URL. People who use the plugin do not create a GitHub App themselves; they install the plugin and follow the connection steps. To switch gateways, change the URL in the settings.
 
 ## Flow (proposal)
 
