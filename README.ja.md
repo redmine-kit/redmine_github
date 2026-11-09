@@ -22,10 +22,10 @@ Redmine GitHub(`redmine_github`)は、Redmine と GitHub をつなぐ Redmine �
 
 ## スポンサー
 
-<a href="https://localstack.cloud">
+<a href="https://www.keyselect.co.jp/">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/localstack-logo-dark.svg">
-    <img alt="LocalStack" src=".github/assets/localstack-logo.svg" width="120" height="28">
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/keyselect-logo-dark.svg">
+    <img alt="KEY SELECT" src=".github/assets/keyselect-logo.svg" width="113" height="24">
   </picture>
 </a>
 

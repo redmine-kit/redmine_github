@@ -6,7 +6,7 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 
 ## Sponsors
 
-<Sponsors><a href="https://localstack.cloud">LocalStack</a></Sponsors>
+<Sponsors ids="keyselect"><a href="https://www.keyselect.co.jp/">KEY SELECT</a></Sponsors>
 
 ## License
 
