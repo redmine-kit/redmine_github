@@ -21,7 +21,7 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 <a href="https://www.keyselect.co.jp/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/keyselect-logo-dark.svg">
-    <img alt="KEY SELECT" src=".github/assets/keyselect-logo.svg" width="113" height="24">
+    <img alt="KEY SELECT" src=".github/assets/keyselect-logo.svg" width="136" height="29">
   </picture>
 </a>
 
