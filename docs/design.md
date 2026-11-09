@@ -95,6 +95,14 @@ Under consideration: plugging into Redmine's standard repository framework (the 
 | Add a repository type (a type such as `Repository::Github` and a GitHub API adapter) | Redmine's standard commit list, issue-commit links, "Fixing keywords", and repository pages work as they are | The standard adapters assume they return the output of a local command (`git`), so it needs checking whether they can be replaced with the API. Serving file browsing and diffs through the API tends to hit the API rate limits |
 | Own display only (custom tables and a hook on the issue page) | Small to build. Little dependence on Redmine internals | Redmine's standard repository features (commit list, status changes by keyword, and so on) are not available |
 
+## Issue templates (proposal)
+
+[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) brings GitHub's issue templates to Redmine and imports them from the repository. For a project linked to a GitHub repository, this plugin is the way the templates arrive:
+
+- **When:** a `push` notification for the default branch whose commits add, change or remove files under `.redmine/ISSUE_TEMPLATE/` or `.github/ISSUE_TEMPLATE/` (the commits' file lists say so; nothing is read for other pushes).
+- **What:** the job reads the first of the two folders that has files through the contents API (read-only token; the App needs the "Contents: read" permission it already has for commits) and calls `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` with the file names and contents and the pushed commit.
+- **Only when installed:** the call is made only when Redmine Issue Template is installed and its module is on for the project. Errors in the templates are shown in that plugin's project settings tab, not here.
+
 ## Using it with Serverless
 
 - **Notification size:** In Serverless, request bodies through CloudFront are limited to 1 MB. Because the gateway sends small trimmed notifications, large GitHub push webhooks are unlikely to hit this limit. If a notification is still over 1 MB after trimming, it is sent in parts.

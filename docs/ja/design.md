@@ -111,6 +111,16 @@ Redmine の標準のリポジトリの仕組み(`Repository` のモデル、`Red
 | リポジトリの種類として入る(`Repository::Github` のような種類と、GitHub の API のアダプター) | Redmine の標準のコミットの一覧、チケットとコミットの関連付け、「修正を示すキーワード」、リポジトリの画面をそのまま使える | 標準のアダプターは、ローカルのコマンド(`git`)の結果を返す前提なので、API に置き換えられるかを確認する必要がある。ファイルの閲覧や差分を API で返すと、呼び出しの回数の上限に当たりやすい |
 | 自前の表示だけ(独自のテーブルと、チケットの画面のフック) | 作りが小さい。Redmine の内部への依存が少ない | Redmine の標準のリポジトリの機能(コミットの一覧、キーワードでの状態の変更など)は使えない |
 
+<a id="issue-templates-proposal"></a>
+
+## チケットテンプレート(案)
+
+[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) は、GitHub のチケットのテンプレートを Redmine で使えるようにし、リポジトリから取り込みます。GitHub のリポジトリと結び付けたプロジェクトでは、このプラグインがテンプレートを届けます。
+
+- **タイミング:** 既定のブランチへの `push` の通知で、コミットが `.redmine/ISSUE_TEMPLATE/` か `.github/ISSUE_TEMPLATE/` の下のファイルを追加、変更、削除しているとき(コミットのファイルの一覧で分かります。ほかの push では何も読みません)。
+- **すること:** ジョブが、2 つのフォルダーのうちファイルがある最初のものを contents API で読み(読むだけのトークン。App にはコミットのためにすでに「Contents: read」の権限があります)、ファイル名と内容、push されたコミットを付けて `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` を呼びます。
+- **入っているときだけ:** Redmine Issue Template が入っていて、プロジェクトでそのモジュールが有効なときだけ呼びます。テンプレートのエラーは、こちらではなく、そのプラグインのプロジェクトの設定のタブに出ます。
+
 <a id="using-it-with-serverless"></a>
 
 ## Serverless で使うとき
