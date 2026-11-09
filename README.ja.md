@@ -33,4 +33,4 @@ Redmine GitHub(`redmine_github`)は、Redmine と GitHub をつなぐ Redmine �
 
 ## ライセンス
 
-Redmine GitHub は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine projectと GitHub とは関係ありません。
+Redmine GitHub は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine と GitHub の非公式のプラグインです。

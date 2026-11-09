@@ -27,4 +27,4 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 
 ## License
 
-Redmine GitHub is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE). Not affiliated with the Redmine project or with GitHub.
+Redmine GitHub is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE). An unofficial plugin for Redmine and GitHub.
