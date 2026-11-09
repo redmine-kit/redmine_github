@@ -1,5 +1,7 @@
 # Redmine GitHub
 
+[![License](https://img.shields.io/github/license/redmine-kit/redmine_github?label=License)](LICENSE)
+
 Redmine GitHub(`redmine_github`)は、Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の標準のリポジトリ(サーバーに置いた Git などのリポジトリ)の代わりに、GitHub のリポジトリを GitHub App でつなぎます。
 
 [English](README.md)
@@ -15,6 +17,17 @@ Redmine GitHub(`redmine_github`)は、Redmine と GitHub をつなぐ Redmine �
 
 - Web サイト: https://redmine-kit.github.io/redmine_github/ja/ (English: https://redmine-kit.github.io/redmine_github/)
 - Markdown: [docs/ja/design.md](docs/ja/design.md) (English: [docs/design.md](docs/design.md))
+
+<a id="sponsors"></a>
+
+## スポンサー
+
+<a href="https://localstack.cloud">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/localstack-logo-dark.svg">
+    <img alt="LocalStack" src=".github/assets/localstack-logo.svg" width="120" height="28">
+  </picture>
+</a>
 
 <a id="license"></a>
 

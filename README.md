@@ -1,5 +1,7 @@
 # Redmine GitHub
 
+[![License](https://img.shields.io/github/license/redmine-kit/redmine_github?label=License)](LICENSE)
+
 Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to GitHub. Instead of Redmine's standard repositories (Git and other repositories on the server), it connects GitHub repositories through a GitHub App.
 
 [日本語](README.ja.md)
@@ -13,6 +15,15 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 
 - Website: https://redmine-kit.github.io/redmine_github/ (日本語: https://redmine-kit.github.io/redmine_github/ja/)
 - Markdown: [docs/design.md](docs/design.md) (日本語: [docs/ja/design.md](docs/ja/design.md))
+
+## Sponsors
+
+<a href="https://localstack.cloud">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/localstack-logo-dark.svg">
+    <img alt="LocalStack" src=".github/assets/localstack-logo.svg" width="120" height="28">
+  </picture>
+</a>
 
 ## License
 

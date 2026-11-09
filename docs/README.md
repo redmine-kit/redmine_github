@@ -7,3 +7,7 @@ Redmine GitHub (`redmine_github`) is a Redmine plugin that connects Redmine to G
 ## Sponsors
 
 <Sponsors><a href="https://localstack.cloud">LocalStack</a></Sponsors>
+
+## License
+
+Redmine GitHub is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](../LICENSE). Not affiliated with the Redmine project or with GitHub.
