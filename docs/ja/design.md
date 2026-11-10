@@ -117,7 +117,7 @@ Redmine の標準のリポジトリの仕組み(`Repository` のモデル、`Red
 
 [Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) は、Redmine にチケットテンプレートを加え、プロジェクトのリポジトリから取り込みます。GitHub のリポジトリと結び付けたプロジェクトでは、このプラグインがテンプレートを届けます。
 
-- **タイミング:** 既定のブランチへの `push` の通知で、コミットが `.redmine/ISSUE_TEMPLATE/` か `.github/ISSUE_TEMPLATE/` の下のファイルを追加、変更、削除しているとき(コミットのファイルの一覧で分かります。ほかの push では何も読みません)。
+- **タイミング:** デフォルトブランチへの `push` の通知で、コミットが `.redmine/ISSUE_TEMPLATE/` か `.github/ISSUE_TEMPLATE/` の下のファイルを追加、変更、削除しているとき(コミットのファイルの一覧で分かります。ほかの push では何も読みません)。
 - **すること:** ジョブが、2 つのフォルダーのうちファイルがある最初のものを contents API で読み(読むだけのトークン。App にはコミットのためにすでに「Contents: read」の権限があります)、ファイル名と内容、push されたコミットを付けて `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` を呼びます。
 - **入っているときだけ:** Redmine Issue Template が入っていて、プロジェクトでそのモジュールが有効なときだけ呼びます。テンプレートのエラーは、こちらではなく、そのプラグインのプロジェクトの設定のタブに出ます。
 
