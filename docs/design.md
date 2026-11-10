@@ -97,7 +97,7 @@ Under consideration: plugging into Redmine's standard repository framework (the 
 
 ## Issue templates (proposal)
 
-[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) brings GitHub's issue templates to Redmine and imports them from the repository. For a project linked to a GitHub repository, this plugin is the way the templates arrive:
+[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) adds issue templates to Redmine and imports them from the project's repository. For a project linked to a GitHub repository, this plugin is the way the templates arrive:
 
 - **When:** a `push` notification for the default branch whose commits add, change or remove files under `.redmine/ISSUE_TEMPLATE/` or `.github/ISSUE_TEMPLATE/` (the commits' file lists say so; nothing is read for other pushes).
 - **What:** the job reads the first of the two folders that has files through the contents API (read-only token; the App needs the "Contents: read" permission it already has for commits) and calls `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` with the file names and contents and the pushed commit.
