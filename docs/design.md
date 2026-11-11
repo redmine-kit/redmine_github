@@ -6,7 +6,7 @@ This is the design of a plugin that replaces Redmine's standard repositories wit
 
 | Item | Decision |
 | --- | --- |
-| Form | A Redmine plugin, `redmine_github`. It is a separate plugin from `redmine_serverless` in Serverless, so that it also works with Redmine on an ordinary server |
+| Form | A Redmine plugin, `redmine_github`. It is a separate plugin from `redmine_aws_lambda` in Serverless, so that it also works with Redmine on an ordinary server |
 | Goal | Connect to GitHub repositories instead of Redmine's standard repositories (Git repositories stored on the server) |
 | First feature | Show the related commits and pull requests (with their state and a link to GitHub) on the issue page |
 | How it connects | A shared gateway (see [Shared gateway](#shared-gateway-proposal) below) holds the GitHub App. Redmine does not connect to GitHub directly; it connects behind the gateway. One GitHub App and gateway can serve many Redmines |

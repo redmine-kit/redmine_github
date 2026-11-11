@@ -8,7 +8,7 @@ Redmine の標準のリポジトリを、GitHub のリポジトリで置き換�
 
 | 項目 | 決定事項 |
 | --- | --- |
-| 形 | Redmine のプラグイン `redmine_github`。Serverless の `redmine_serverless` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
+| 形 | Redmine のプラグイン `redmine_github`。Serverless の `redmine_aws_lambda` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
 | 目的 | Redmine の標準のリポジトリ(サーバーに置いた Git のリポジトリ)の代わりに、GitHub のリポジトリとつなぐ |
 | 最初にできること | チケットの画面に、関わるコミットと Pull Request (状態と、GitHub へのリンク)を出す |
 | つなぎ方 | GitHub App を、共通のゲートウェイ(下の「共通のゲートウェイ」)が持つ。Redmine は、GitHub に直接つながず、ゲートウェイの先につながる。1 つの GitHub App とゲートウェイを、複数の Redmine で使える |
