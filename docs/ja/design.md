@@ -127,7 +127,7 @@ Redmine の標準のリポジトリの仕組み(`Repository` のモデル、`Red
 
 - **通知の大きさ:** Serverless では、CloudFront を通る要求の本文が 1 MB までです。ゲートウェイが整えた小さな通知を送るので、GitHub の push の webhook が大きくても当たりにくくなります。整えたあとも 1 MB を超えるときは、分けて送ります。
 - **ジョブ:** Serverless では、ActiveJob のジョブは SQS で `redmine-worker` が動かします。このプラグインは、ActiveJob の標準の仕組みだけを使います。
-- **外への通信:** GitHub の API を呼ぶので、Redmine から GitHub に届く必要があります。
+- **外への通信:** GitHub の API を呼ぶので、Redmine から GitHub に届く必要があります。Serverless では、VPC 外への経路を NAT インスタンスの構成にします。VPC エンドポイントの構成では、インターネットに出られません。
 
 <a id="open-questions"></a>
 

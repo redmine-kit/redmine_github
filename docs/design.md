@@ -107,7 +107,7 @@ Under consideration: plugging into Redmine's standard repository framework (the 
 
 - **Notification size:** In Serverless, request bodies through CloudFront are limited to 1 MB. Because the gateway sends small trimmed notifications, large GitHub push webhooks are unlikely to hit this limit. If a notification is still over 1 MB after trimming, it is sent in parts.
 - **Jobs:** In Serverless, ActiveJob jobs run on `redmine-worker` through SQS. This plugin uses only ActiveJob's standard mechanisms.
-- **Outbound traffic:** The plugin calls the GitHub API, so Redmine must be able to reach GitHub.
+- **Outbound traffic:** The plugin calls the GitHub API, so Redmine must be able to reach GitHub. In Serverless, this needs the NAT instance setup of its routes out of the VPC; the VPC endpoint setup has no route to the internet.
 
 ## Open questions
 
