@@ -1,8 +1,8 @@
-# Redmine GitHub
+# Redmine Kit GitHub
 
 [![License](https://img.shields.io/github/license/redmine-kit/redmine_github?label=License)](LICENSE)
 
-Redmine GitHub (`redmine_github`) は、Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の標準のリポジトリ (サーバーに置いた Git などのリポジトリ) の代わりに、GitHub のリポジトリを GitHub App でつなぎます。
+Redmine Kit GitHub (`redmine_kit_github`) は、Redmine と GitHub をつなぐ Redmine のプラグインです。Redmine の標準のリポジトリ (サーバーに置いた Git などのリポジトリ) の代わりに、GitHub のリポジトリを GitHub App でつなぎます。
 
 [English](README.md)
 
@@ -33,4 +33,4 @@ Redmine GitHub (`redmine_github`) は、Redmine と GitHub をつなぐ Redmine 
 
 ## ライセンス
 
-Redmine GitHub は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine と GitHub の非公式のプラグインです。
+Redmine Kit GitHub は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine と GitHub の非公式のプラグインです。

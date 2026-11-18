@@ -8,12 +8,12 @@ Redmine の標準のリポジトリを、GitHub のリポジトリで置き換�
 
 | 項目 | 決定事項 |
 | --- | --- |
-| 形態 | Redmine のプラグイン `redmine_github`。Serverless の `redmine_aws_lambda` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
+| 形態 | Redmine のプラグイン `redmine_kit_github`。Serverless の `redmine_aws_lambda` とは別のプラグインにし、ふつうのサーバーの Redmine でも使えるようにする |
 | 目的 | Redmine の標準のリポジトリ (サーバーに置いた Git のリポジトリ) の代わりに、GitHub のリポジトリとつなぐ |
 | 最初の機能 | チケットの画面に、関わるコミットと Pull Request (状態と、GitHub へのリンク) を出す |
 | 接続方式 | GitHub App を、共通のゲートウェイ (下の「共通のゲートウェイ」) が持つ。Redmine は、GitHub に直接つながず、ゲートウェイの先につながる。1 つの GitHub App とゲートウェイを、複数の Redmine で使える |
 | ゲートウェイの URL | プラグインは、プラグインの設定の URL のゲートウェイにつなぐ。プロトコルに合うゲートウェイなら、どれにでもつなげる |
-| 名前 | `redmine_github`。同じ名前のほかのプラグイン (agileware-jp/redmine_github) があるが、かまわない |
+| 名前 | `redmine_kit_github`。Redmine Kit の名前空間に置き、agileware-jp/redmine_github と名前が重ならないようにする |
 
 <a id="shared-gateway-proposal"></a>
 
@@ -25,8 +25,8 @@ GitHub App とのやり取りを、Redmine の外の共通の仕組み (ゲー�
 flowchart LR
   gh["GitHub<br>(App の<br>インストール)"]
   gw["ゲートウェイ<br>(GitHub App の<br>秘密鍵を持つ)"]
-  r1["Redmine A<br>(redmine_github)"]
-  r2["Redmine B<br>(redmine_github)"]
+  r1["Redmine A<br>(redmine_kit_github)"]
+  r2["Redmine B<br>(redmine_kit_github)"]
 
   gh -- "webhook<br>(App の 1 つの URL)" --> gw
   gw -- "整えた通知<br>(つなぎごとの署名)" --> r1
@@ -85,7 +85,7 @@ flowchart LR
 sequenceDiagram
   participant G as GitHub
   participant W as ゲートウェイ
-  participant R as Redmine (redmine_github)
+  participant R as Redmine (redmine_kit_github)
   participant J as Redmine のジョブ
   G->>W: webhook (push、pull_request)
   W->>W: 署名を確認し、すぐに 2xx を返す
@@ -115,11 +115,11 @@ Redmine の標準のリポジトリの仕組み (`Repository` のモデル、`Re
 
 ## チケットテンプレート (案)
 
-[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) は、Redmine にチケットテンプレートを加え、プロジェクトのリポジトリから取り込みます。GitHub のリポジトリと結び付けたプロジェクトでは、このプラグインがテンプレートを届けます。
+[Redmine Kit Issue Template](https://github.com/redmine-kit/redmine_issue_template) は、Redmine にチケットテンプレートを加え、プロジェクトのリポジトリから取り込みます。GitHub のリポジトリと結び付けたプロジェクトでは、このプラグインがテンプレートを届けます。
 
 - **タイミング:** デフォルトブランチへの `push` の通知で、コミットが `.redmine/ISSUE_TEMPLATE/` か `.github/ISSUE_TEMPLATE/` の下のファイルを追加、変更、削除しているとき (コミットのファイルの一覧で分かります。ほかの push では何も読みません)。
-- **すること:** ジョブが、2 つのフォルダーのうちファイルがある最初のものを contents API で読み (読むだけのトークン。App にはコミットのためにすでに「Contents: read」の権限があります)、ファイル名と内容、push されたコミットを付けて `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` を呼びます。
-- **インストールされているときだけ:** Redmine Issue Template がインストールされていて、プロジェクトでそのモジュールが有効なときだけ呼びます。テンプレートのエラーは、こちらではなく、そのプラグインのプロジェクトの設定のタブに出ます。
+- **すること:** ジョブが、2 つのフォルダーのうちファイルがある最初のものを contents API で読み (読むだけのトークン。App にはコミットのためにすでに「Contents: read」の権限があります)、ファイル名と内容、push されたコミットを付けて `RedmineKit::IssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` を呼びます。
+- **インストールされているときだけ:** Redmine Kit Issue Template がインストールされていて、プロジェクトでそのモジュールが有効なときだけ呼びます。テンプレートのエラーは、こちらではなく、そのプラグインのプロジェクトの設定のタブに出ます。
 
 <a id="using-it-with-serverless"></a>
 

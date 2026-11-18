@@ -6,12 +6,12 @@ This is the design of a plugin that replaces Redmine's standard repositories wit
 
 | Item | Decision |
 | --- | --- |
-| Form | A Redmine plugin, `redmine_github`. It is a separate plugin from `redmine_aws_lambda` in Serverless, so that it also works with Redmine on an ordinary server |
+| Form | A Redmine plugin, `redmine_kit_github`. It is a separate plugin from `redmine_aws_lambda` in Serverless, so that it also works with Redmine on an ordinary server |
 | Goal | Connect to GitHub repositories instead of Redmine's standard repositories (Git repositories stored on the server) |
 | First feature | Show the related commits and pull requests (with their state and a link to GitHub) on the issue page |
 | How it connects | A shared gateway (see [Shared gateway](#shared-gateway-proposal) below) holds the GitHub App. Redmine does not connect to GitHub directly; it connects behind the gateway. One GitHub App and gateway can serve many Redmines |
 | Gateway URL | The plugin connects to the gateway whose URL is set in the plugin settings. Any gateway that follows the protocol can be used |
-| Name | `redmine_github`. Another plugin has the same name (agileware-jp/redmine_github), which is acceptable |
+| Name | `redmine_kit_github`, in Redmine Kit's namespace, so that it doesn't share its name with agileware-jp/redmine_github |
 
 ## Shared gateway (proposal)
 
@@ -21,8 +21,8 @@ All communication with the GitHub App goes through a shared component outside Re
 flowchart LR
   gh["GitHub<br>(App<br>installation)"]
   gw["Gateway<br>(holds the GitHub App<br>private key)"]
-  r1["Redmine A<br>(redmine_github)"]
-  r2["Redmine B<br>(redmine_github)"]
+  r1["Redmine A<br>(redmine_kit_github)"]
+  r2["Redmine B<br>(redmine_kit_github)"]
 
   gh -- "webhook<br>(the App's single URL)" --> gw
   gw -- "trimmed notification<br>(signed per connection)" --> r1
@@ -71,7 +71,7 @@ flowchart LR
 sequenceDiagram
   participant G as GitHub
   participant W as Gateway
-  participant R as Redmine (redmine_github)
+  participant R as Redmine (redmine_kit_github)
   participant J as Redmine job
   G->>W: webhook (push, pull_request)
   W->>W: Verify the signature and return 2xx at once
@@ -97,11 +97,11 @@ Under consideration: plugging into Redmine's standard repository framework (the 
 
 ## Issue templates (proposal)
 
-[Redmine Issue Template](https://github.com/redmine-kit/redmine_issue_template) adds issue templates to Redmine and imports them from the project's repository. For a project linked to a GitHub repository, this plugin is the way the templates arrive:
+[Redmine Kit Issue Template](https://github.com/redmine-kit/redmine_issue_template) adds issue templates to Redmine and imports them from the project's repository. For a project linked to a GitHub repository, this plugin is the way the templates arrive:
 
 - **When:** a `push` notification for the default branch whose commits add, change or remove files under `.redmine/ISSUE_TEMPLATE/` or `.github/ISSUE_TEMPLATE/` (the commits' file lists say so; nothing is read for other pushes).
-- **What:** the job reads the first of the two folders that has files through the contents API (read-only token; the App needs the "Contents: read" permission it already has for commits) and calls `RedmineIssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` with the file names and contents and the pushed commit.
-- **Only when installed:** the call is made only when Redmine Issue Template is installed and its module is on for the project. Errors in the templates are shown in that plugin's project settings tab, not here.
+- **What:** the job reads the first of the two folders that has files through the contents API (read-only token; the App needs the "Contents: read" permission it already has for commits) and calls `RedmineKit::IssueTemplate::Importer.import(project, files:, revision:, source: 'github', folder:)` with the file names and contents and the pushed commit.
+- **Only when installed:** the call is made only when Redmine Kit Issue Template is installed and its module is on for the project. Errors in the templates are shown in that plugin's project settings tab, not here.
 
 ## Using it with Serverless
 
