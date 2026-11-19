@@ -10,6 +10,7 @@ Redmine Kit GitHub (`redmine_kit_github`) is a Redmine plugin that connects Redm
 
 - It links issues to commits and pull requests also where repositories cannot be kept on the server, such as Redmine on AWS Lambda with [Serverless](https://github.com/redmine-kit/serverless).
 - It also works with Redmine on an ordinary server.
+- It is on for the whole Redmine server, with no project module. In a project it works wherever Redmine's Repository module is enabled, for the users that Redmine's repository permissions allow.
 
 ## Documentation
 

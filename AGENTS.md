@@ -6,6 +6,7 @@ Guidelines for people and coding agents working in this repository. See [README.
 
 - **Do not edit Redmine:** use only Redmine's extension points (plugins, hooks, `prepend`). List replaced code in the documentation.
 - **Works in any environment:** do not depend on one way of running Redmine (such as Lambda). Notes for use with Serverless go in their own section.
+- **No project module** (the user, 2026-11-19): the plugin is on for the whole Redmine server and set up in its plugin settings. In a project it works wherever Redmine's Repository module is enabled; access follows Redmine's repository permissions (`browse_repository`, `view_changesets`, `manage_repository`) and the plugin's own permissions, registered without `project_module`. See [docs/design.md](docs/design.md#decisions-2026-11-09).
 - **No secrets in the repository:** the GitHub App's private key and webhook secrets are kept neither in this repository nor in plain text in Redmine's database (where they are kept is decided in [docs/design.md](docs/design.md)).
 - **What to build only:** describe what the plugin and the protocol do. No companies, customers, services or prices; examples use `example.com` and similar.
 

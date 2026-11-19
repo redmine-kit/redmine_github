@@ -12,6 +12,7 @@ This is the design of a plugin that replaces Redmine's standard repositories wit
 | How it connects | A shared gateway (see [Shared gateway](#shared-gateway-proposal) below) holds the GitHub App. Redmine does not connect to GitHub directly; it connects behind the gateway. One GitHub App and gateway can serve many Redmines |
 | Gateway URL | The plugin connects to the gateway whose URL is set in the plugin settings. Any gateway that follows the protocol can be used |
 | Name | `redmine_kit_github`, in Redmine Kit's namespace, so that it doesn't share its name with agileware-jp/redmine_github |
+| Scope (2026-11-19) | For the whole Redmine server, with no project module: it is set up in Administration › Plugins (the plugin's settings). In a project it works wherever Redmine's own Repository module is enabled. Access follows Redmine's repository permissions (Browse repository, View changesets, Manage repository) and the plugin's own permissions, which are registered without a project module |
 
 ## Shared gateway (proposal)
 

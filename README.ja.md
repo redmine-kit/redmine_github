@@ -10,6 +10,7 @@ Redmine Kit GitHub (`redmine_kit_github`) は、Redmine と GitHub をつなぐ 
 
 - サーバーにリポジトリを置けない環境 ([Serverless](https://github.com/redmine-kit/serverless) で AWS Lambda で動かす Redmine など) でも、チケットとコミット、Pull Request を結び付けられるようにします。
 - ふつうのサーバーの Redmine でも使えるようにします。
+- Redmine サーバー全体で有効になり、プロジェクトのモジュールは持ちません。プロジェクトでは、Redmine のモジュール「リポジトリ」が有効なところで、Redmine のリポジトリの権限で許されたユーザーに対して動きます。
 
 <a id="documentation"></a>
 
